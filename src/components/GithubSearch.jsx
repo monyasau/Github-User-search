@@ -5,7 +5,7 @@ import UserCard from "./UserCard";
 let GithubSearch = () => {
   const [userData, setUserData] = useState(null);
   // const [userInput, setUserInput] = useState("octocat");
-  const [userInput, setUserInput] = useState("ogbenih");
+  const [userInput, setUserInput] = useState("monyasau");
   // const [userInput, setUserInput] = useState("");
   //   const [userInput, setUserInput] = useState(null);
   const githubToken = "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";
