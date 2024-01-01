@@ -1,7 +1,7 @@
 let UserCard = ({ apiUserData }) => {
   return (
     <>
-      <div className="lg:max-w-[70%] w-[80%] mx-auto">
+      <div className="lg:max-w-[70%] w-[80%] mx-auto h-fit">
         <div className="border w-full bg-[#eee] h-[100px] flex">
           <div
             aria-label="image-cont"
@@ -9,7 +9,7 @@ let UserCard = ({ apiUserData }) => {
           >
             <img
               src={apiUserData.avatar_url}
-              className="rounded-full w-[80px] h-[80px] "
+              className="rounded-full border w-[80px] h-[80px] "
             />
           </div>
           <div className="w-[70%] p-2 h-full flex-wrap justify-center flex">
