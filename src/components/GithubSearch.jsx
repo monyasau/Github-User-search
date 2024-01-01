@@ -1,15 +1,40 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import UserCard from "./UserCard";
 
 let GithubSearch = () => {
-    const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
+  // const [userInput, setUserInput] = useState("octocat");
+  const [userInput, setUserInput] = useState("ogbenih");
+  // const [userInput, setUserInput] = useState("");
+  //   const [userInput, setUserInput] = useState(null);
+  const githubToken = "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";
+  useEffect(() => {
+    axios
+      .get(`https://api.github.com/search/users?q=${userInput}`, {
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        console.log("An error occurred: ", error);
+        setUserData(null);
+      });
+  }, [userInput]);
 
-
-    return (
+  return (
     <>
+      {/* <pre className="text-[10px]">{JSON.stringify(userData, null, 2)}</pre> */}
+
       <div className="">
-        <div className="flex max-w-screen-xl w-full mx-auto justify-between py-10 md:px-0 px-4">
-          <div aria-label="search section"className="border flex md:h-[70px] h-[50px] rounded md:rounded-none  w-full mx-auto">
+        <div className="flex max-w-screen-xl w-full mx-auto justify-between py-10 md:px-0 px-4 flex flex-wrap">
+          <div
+            aria-label="search section"
+            className="border flex md:h-[70px] h-[50px] rounded md:rounded-none  w-full mx-auto"
+          >
             <input type="text" className="w-[85%]" />
             <button className="w-[15%] bg-[#444] rounded">
               <svg
@@ -28,12 +53,37 @@ let GithubSearch = () => {
               </svg>
             </button>
           </div>
+          <div
+            aria-label="Search results section"
+            className="my-8 border w-full min-h-[50vh] p-2 grid sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {!(userData === null) ? (
+              userData.items.map((userInfo, i) => (
+                <UserCard key={i} apiUserData={userInfo} />
+              ))
+            ) : (
+              // <pre className="text-[10px]">{JSON.stringify(userData, null, 2)}</pre>
+              <>
+                <span>
+              </span>
+              <span className="text-center">
+                <h3 className="border-b">404</h3>
+                Username not found,
+                  Please input a different Username to search for
+
+                </span>
+              </>
+            )}
+            {/* <UserCard apiUserData={userData}/> */}
+            {/* {userData && <UserCard userData={userData} />} */}
+            {/* {userData && <>skssks </>} */}
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-// api: https://api.github.com/search/users?q=ogbenihmmd
+// api: https://api.github.com/search/users?q=octocat
 
 export default GithubSearch;
