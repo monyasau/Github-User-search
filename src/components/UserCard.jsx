@@ -1,15 +1,15 @@
 let UserCard = ({ apiUserData }) => {
   return (
     <>
-      <div className="lg:max-w-[70%] w-[80%] mx-auto h-fit">
-        <div className="border w-full bg-[#eee] h-[100px] flex">
+      <div className="lg:max-w-[70%] w-[80%] mx-auto h-fit m-4">
+        <div className="border w-full bg-[#eee] h-fit flex p-4 w-fit max-w-[292px]">
           <div
             aria-label="image-cont"
-            className="w-[30%] border-r h-full flex items-center justify-center"
+            className="min-w-[40%] h-full flex items-center justify-center"
           >
             <img
               src={apiUserData.avatar_url}
-              className="rounded-full border w-[80px] h-[80px] "
+              className="rounded-full border w-[100px] h-[100px] "
             />
           </div>
           <div className="w-[70%] p-2 h-full flex-wrap justify-center flex">
@@ -30,7 +30,7 @@ let UserCard = ({ apiUserData }) => {
                 </svg>
               </a>
             </div>
-          <button className="bg-[#ddd] px-2">View More</button>
+          <button className="bg-[#ddd] p-2 hover:bg-gray-400">View More</button>
           </div>
         </div>
         {/* <pre className="text-[10px]">{JSON.stringify(apiUserData, null, 2)}</pre> */}
