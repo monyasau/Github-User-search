@@ -7,21 +7,30 @@ let GithubSearch = () => {
   const [userInput, setUserInput] = useState("ola");
   // const githubToken = "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";
   const githubToken = "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";
+const fetchGithubData=()=>{
+  axios
+  .get(`https://api.github.com/search/users?q=${userInput}`, {
+    headers: {
+      Authorization: `Bearer ${githubToken}`,
+    },
+  })
+  .then((response) => {
+    setUserData(response.data);
+  })
+  .catch((error) => {
+    console.log("An error occurred: ", error);
+    setUserData(null);
+  });
+}
+  let updateInput=(event)=>{
+    (event.keyCode ===13)?
+    fetchGithubData():setUserInput(event.target.value)
+  }
   useEffect(() => {
-    axios
-      .get(`https://api.github.com/search/users?q=${userInput}`, {
-        headers: {
-          Authorization: `Bearer ${githubToken}`,
-        },
-      })
-      .then((response) => {
-        setUserData(response.data);
-      })
-      .catch((error) => {
-        console.log("An error occurred: ", error);
-        setUserData(null);
-      });
-  }, [userInput]);
+    console.log("updated")
+  
+  }, [userInput])
+  
 
   return (
     <>
@@ -33,7 +42,7 @@ let GithubSearch = () => {
             aria-label="search section"
             className="border flex md:h-[70px] h-[50px] rounded md:rounded-none p-4 items-center w-full mx-auto"
           >
-            <input type="text" className=" focus:outline-none flex-grow " />
+            <input type="text" className=" focus:outline-none flex-grow " onKeyUp={updateInput} />
             {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
