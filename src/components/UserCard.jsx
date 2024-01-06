@@ -12,9 +12,9 @@ let UserCard = ({ apiUserData }) => {
               className="rounded-full border w-[100px] h-[100px] "
             />
           </div>
-          <div className="w-[70%] p-2 h-full flex-wrap justify-center flex">
+          <div className="max-w-[70%] overflow-auto p-2 h-full flex-wrap justify-center flex">
             <div className=" items-center justify-around h-[50%] min-w-[90%] flex">
-              <span className="text-xl">
+              <span className="">
               {apiUserData.login}
               </span>
               <a className="" href={apiUserData.html_url} title="view this user account on Github">
