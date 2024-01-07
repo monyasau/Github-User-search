@@ -1,4 +1,10 @@
+import { useState } from "react";
+import AdvancedUserCard from "./AdvancedUserCard";
+
 let UserCard = ({ apiUserData }) => {
+  const [showAdvancedUserInfoOpen, setshowAdvancedUserInfoOpen] =
+    useState(false);
+  const showAdvancedUserInfo = () => {};
   return (
     <>
       <div className="lg:max-w-[70%] mx-auto h-fit m-4">
@@ -14,12 +20,14 @@ let UserCard = ({ apiUserData }) => {
           </div>
           <div className="max-w-[70%] overflow-auto p-2 h-full flex-wrap justify-center flex">
             <div className=" items-center justify-around h-[50%] min-w-[90%] flex">
-              <span className="">
-              {apiUserData.login}
-              </span>
-              <a className="" href={apiUserData.html_url} title="view this user account on Github">
+              <span className="">{apiUserData.login}</span>
+              <a
+                className=""
+                href={apiUserData.html_url}
+                title="view this user account on Github"
+              >
                 <svg
-                className=" border-[#444] m-2 "
+                  className=" border-[#444] m-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
@@ -30,10 +38,25 @@ let UserCard = ({ apiUserData }) => {
                 </svg>
               </a>
             </div>
-          <button className="bg-[#ddd] p-2 hover:bg-gray-400">View More</button>
+            <button
+              className="bg-[#ddd] p-2 hover:bg-gray-400"
+              onClick={() => {
+                setshowAdvancedUserInfoOpen(true);
+              }}
+            >
+              View More
+            </button>
           </div>
         </div>
-        {/* <pre className="text-[10px]">{JSON.stringify(apiUserData, null, 2)}</pre> */}
+        {showAdvancedUserInfoOpen ? (
+          // <div className="">open</div>
+          <AdvancedUserCard userInfo={apiUserData.url}/>
+        ) : (
+          // <div className=" fixed inset-0 z-40 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80">
+          //   closed
+          // </div>
+          <></>
+        )}
       </div>
     </>
   );
