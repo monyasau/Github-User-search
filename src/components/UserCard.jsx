@@ -1,7 +1,7 @@
 let UserCard = ({ apiUserData }) => {
   return (
     <>
-      <div className="lg:max-w-[70%] w-[80%] mx-auto h-fit m-4">
+      <div className="lg:max-w-[70%] mx-auto h-fit m-4">
         <div className="border w-full bg-[#eee] h-fit flex p-4 w-fit max-w-[292px]">
           <div
             aria-label="image-cont"
