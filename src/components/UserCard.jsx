@@ -48,14 +48,9 @@ let UserCard = ({ apiUserData }) => {
             </button>
           </div>
         </div>
-        {showAdvancedUserInfoOpen ? (
+        {showAdvancedUserInfoOpen && (
           // <div className="">open</div>
           <AdvancedUserCard userInfo={apiUserData.url}/>
-        ) : (
-          // <div className=" fixed inset-0 z-40 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80">
-          //   closed
-          // </div>
-          <></>
         )}
       </div>
     </>

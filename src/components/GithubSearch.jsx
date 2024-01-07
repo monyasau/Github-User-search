@@ -44,7 +44,7 @@ const fetchGithubData=()=>{
             aria-label="search section"
             className="border flex md:h-[70px] h-[50px] rounded md:rounded-none p-4 items-center w-full mx-auto"
           >
-            <input type="text" className=" focus:outline-none flex-grow " onKeyUp={updateInput} />
+            <input type="text" autoFocus className=" focus:outline-none flex-grow " onKeyUp={updateInput} />
             {loading===false?
               <svg
                 xmlns="http://www.w3.org/2000/svg"
