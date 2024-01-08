@@ -4,7 +4,9 @@ import AdvancedUserCard from "./AdvancedUserCard";
 let UserCard = ({ apiUserData }) => {
   const [showAdvancedUserInfoOpen, setshowAdvancedUserInfoOpen] =
     useState(false);
-  const showAdvancedUserInfo = () => {};
+    const showAdvancedUserInfo = () => {
+      setshowAdvancedUserInfoOpen((prev) => !prev);
+    };
   return (
     <>
       <div className="lg:max-w-[70%] mx-auto h-fit m-4">
@@ -39,19 +41,21 @@ let UserCard = ({ apiUserData }) => {
               </a>
             </div>
             <button
-              className="bg-[#ddd] p-2 hover:bg-gray-400"
-              onClick={() => {
-                setshowAdvancedUserInfoOpen(true);
-              }}
-            >
-              View More
-            </button>
+        className="bg-[#ddd] p-2 hover:bg-gray-400"
+        onClick={showAdvancedUserInfo}
+      >
+        View More
+      </button>
+
           </div>
         </div>
         {showAdvancedUserInfoOpen && (
           // <div className="">open</div>
           <AdvancedUserCard userInfo={apiUserData.url}/>
-        )}
+          
+          )
+        }
+        
       </div>
     </>
   );
