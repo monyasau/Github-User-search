@@ -7,7 +7,7 @@ let GithubSearch = () => {
   const [userInput, setUserInput] = useState("ola");
   const [loading, setLoading] = useState(false);
   // const githubToken = "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";
-  const githubToken = " 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";
+  // const githubToken = " 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";
 const fetchGithubData=()=>{
 
   setLoading(true);

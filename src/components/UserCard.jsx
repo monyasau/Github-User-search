@@ -17,7 +17,7 @@ let UserCard = ({ apiUserData }) => {
           >
             <img
               src={apiUserData.avatar_url}
-              className="rounded-full border w-[100px] h-[100px] "
+              className="rounded-full border w-[100px] h-[100px] text-[10px]"
               alt={`${apiUserData.login}'s Profile picture`}
             />
           </div>
